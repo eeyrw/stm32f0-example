@@ -1,0 +1,33 @@
+
+# STD Defines
+DDEFS += -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000
+
+# source director
+STM32F0_STD_LIB     = $(STM32F0_LIB_DIR)/STM32F0xx_StdPeriph_Driver
+STM32F0_CPAL_LIB    = $(STM32F0_LIB_DIR)/STM32F0xx_CPAL_Driver
+STM32F0_CORE_DIR    = $(STM32F0_LIB_DIR)/CMSIS/Include
+STM32F0_DEVICE_DIR  = $(STM32F0_LIB_DIR)/CMSIS/Device/ST/STM32F0xx
+STM32F0_SRC_DIR     = $(STM32F0_STD_LIB)/src
+STM32F0_CPAL_SRC_DIR   = $(STM32F0_CPAL_LIB)/src
+STM32F0_INC_DIR     = $(STM32F0_STD_LIB)/inc
+STM32F0_INC_DIR     += $(STM32F0_CPAL_LIB)/inc
+STM32F0_INC_DIR     += $(STM32F0_DEVICE_DIR)/Include
+# startup
+ASM_SRC  += $(STM32F0_DEVICE_DIR)/Source/gcc_ride7/startup_stm32f030.s
+
+# CMSIS
+SRC  += $(STM32F0_DEVICE_DIR)/Source/system_stm32f0xx.c
+
+# use libraries, please add or remove when you use or remove it.
+SRC  += $(STM32F0_SRC_DIR)/stm32f0xx_rcc.c
+SRC  += $(STM32F0_SRC_DIR)/stm32f0xx_gpio.c
+SRC  += $(STM32F0_SRC_DIR)/stm32f0xx_exti.c
+SRC  += $(STM32F0_SRC_DIR)/stm32f0xx_usart.c
+SRC  += $(STM32F0_SRC_DIR)/stm32f0xx_misc.c
+
+# include directories
+INCLUDE_DIRS += $(STM32F0_CORE_DIR)
+INCLUDE_DIRS += $(STM32F0_DEVICE_DIR)
+INCLUDE_DIRS += $(STM32F0_INC_DIR)
+INCLUDE_DIRS += $(STM32F0_STD_LIB)
+
