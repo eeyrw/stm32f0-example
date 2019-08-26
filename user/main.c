@@ -1,5 +1,6 @@
 #include "stm32f0xx.h"
 #include "stm32f0xx_conf.h"
+#include <stdlib.h>
 
 void Delay(uint32_t t)
 {
@@ -26,6 +27,10 @@ int main(void)
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
+  volatile uint8_t *p;
+  p=malloc(100);
+  p[1]=1;
+  printf("That's fine.");
   while (1)
   {
     /* Set PB1 */

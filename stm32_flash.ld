@@ -128,7 +128,9 @@ SECTIONS
         _edata = .;
     } >ram
 
-
+  PROVIDE ( end = _ebss );
+  PROVIDE ( _end = _ebss );
+  
     /* Uninitialized data section (zeroed out by startup code) */
     .bss :
     {
